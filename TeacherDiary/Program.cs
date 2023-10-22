@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using TeacherDiary;
+
+var juziu = Student.result;
+Console.WriteLine(juziu);
