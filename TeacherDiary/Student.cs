@@ -1,6 +1,6 @@
 namespace TeacherDiary
 {
-    public class Student
+    public class Student : IStudent
     {
         private List<float> grades = new List<float>();
         public Student(string name, string surname)
@@ -10,6 +10,7 @@ namespace TeacherDiary
         }
         public string Name { get; private set; }
         public string Surname { get; private set; }
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 6.5)
@@ -18,7 +19,7 @@ namespace TeacherDiary
             }
             else
             {
-                Console.Write("Invalid data.");
+                throw new Exception("Dane spoza zakresu walidacji.");
             }
         }
         public void AddGrade(string? grade)
@@ -31,8 +32,40 @@ namespace TeacherDiary
                 }
                 else
                 {
-                    Console.Write("This string is not a float. Impossible to parse.");
+                    throw new Exception("To, co wprowadziles nie jest liczba.");
                 }
+            }
+        }
+        public void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grades.Add(6);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(5);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(4);
+                    break;
+                case 'D':
+                case 'd':
+                    this.grades.Add(3);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(2);
+                    break;
+                case 'F':
+                case 'f':
+                    this.grades.Add(1);
+                    break;
+                default:
+                    throw new Exception("Niewlasciwa literka.");
             }
         }
         public void AddGrade(int grade)
@@ -59,7 +92,7 @@ namespace TeacherDiary
         {
             var statistics = new Statistics();
 
-            // inicjalne wartosci
+            // wartosci inicjalne 
             statistics.Average = 0;
             statistics.Min = float.MaxValue;
             statistics.Max = float.MinValue;
@@ -75,7 +108,6 @@ namespace TeacherDiary
             {
                 statistics.Average /= statistics.Sum;
             }
-
             return statistics;
         }
     }

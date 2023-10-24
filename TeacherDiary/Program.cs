@@ -4,7 +4,7 @@ Console.WriteLine("======================================================");
 Console.WriteLine("Witamy w programie wyliczajacym ocene koncowa studenta");
 Console.WriteLine("======================================================");
 Console.WriteLine("Program akceptuje oceny numeryczne od 1 do 6+ lub literowe od A do F.");
-Console.WriteLine("Naciskajac litere 'Q' konczysz wprowadzanie ocen.");
+Console.WriteLine("Wybierajac litere 'Q' konczysz wprowadzanie ocen.");
 Console.WriteLine();
 
 var student = new Student("Adam", "Kamizelich");
@@ -18,7 +18,18 @@ while (true)
     {
         break;
     }
-    student.AddGrade(input);
+    try
+    {
+        student.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
+    finally
+    {
+
+    }
 }
 
 var statistics = student.GetStatistics();
