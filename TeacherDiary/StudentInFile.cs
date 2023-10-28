@@ -1,18 +1,22 @@
+using System.Globalization;
 namespace TeacherDiary
 {
-    public class Student : IStudent
+    public class StudentInFile : StudentBase
     {
+        private const string fileName = "grades.txt";
         private List<float> grades = new List<float>();
-        public Student(string name, string surname)
+        public StudentInFile(string name, string surname, string sex)
+            : base(name, surname, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
+            using (var writer = File.AppendText(fileName))
+            {
+                writer.WriteLine(grade);
+            }
+
+
             if (grade >= 0 && grade <= 6.5)
             {
                 this.grades.Add(grade);
@@ -22,7 +26,7 @@ namespace TeacherDiary
                 throw new Exception("Dane spoza zakresu walidacji.");
             }
         }
-        public void AddGrade(string? grade)
+        public override void AddGrade(string? grade)
         {
             if (grades != null)
             {
@@ -36,7 +40,7 @@ namespace TeacherDiary
                 }
             }
         }
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -68,40 +72,39 @@ namespace TeacherDiary
                     throw new Exception("Niewlasciwa literka.");
             }
         }
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float value = (float)grade;
             this.AddGrade(value);
         }
-        public void AddGrade(double grade)
-        {
-            float value = (float)grade;
-            this.AddGrade(value);
-        }
-        public void AddGrade(long grade)
-        {
-            float value = (float)grade;
-            this.AddGrade(value);
-        }
-        public void AddGrade(ulong grade)
-        {
-            float value = (float)grade;
-            this.AddGrade(value);
-        }
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
+            statistics.Sum = this.grades.Count;
 
-            // wartosci inicjalne 
-            statistics.Average = 0;
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
+            if (grades != null)
+            {
+                foreach (var grade in this.grades)
+                {
+                    statistics.AddGrade(grade);
+                }
+                return statistics;
+            }
+            else
+            {
+                throw new Exception("Semestr nie zaliczony! Brak ocen. Do poprawki.");
+            }
+
+        }
+    }
+}
+
+// wartosci inicjalne 
+/*            statistics.Average = 0;
             statistics.Sum = this.grades.Count;
 
             foreach (var grade in grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
                 statistics.Average += grade;
             }
             if (statistics.Sum != 0)
@@ -112,3 +115,4 @@ namespace TeacherDiary
         }
     }
 }
+*/

@@ -4,10 +4,10 @@ namespace TeacherDiary
     {
         string Name { get; }
         string Surname { get; }
+        string Sex { get; }
         void AddGrade(float grade);
-        void AddGrade(string grade);
         void AddGrade(int grade);
-        void AddGrade(char grade);
+        void AddGrade(string grade);
         Statistics GetStatistics();
     }
 }
