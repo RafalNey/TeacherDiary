@@ -83,7 +83,7 @@ void EnterGrade(IStudent student)
 {
     Console.Clear();
     Console.WriteLine("===================================================================");
-    Console.WriteLine($"     Wprowadzasz oceny studenta {name} {surname}");
+    Console.WriteLine($"         Wprowadzasz oceny studenta {name} {surname}");
     Console.WriteLine("===================================================================");
     Console.WriteLine();
     Console.WriteLine("Program akceptuje oceny numeryczne od 1 do 6 z czesciami ulamkowymi np. 3.35");
