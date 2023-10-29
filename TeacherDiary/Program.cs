@@ -9,7 +9,7 @@ Console.WriteLine();
 Console.WriteLine("Wprowadz dane studenta:");
 Console.WriteLine();
 
-// Wprowadzanie danych studenta.
+// Wprowadzanie danych studenta (imie i nazwisko).
 string name;
 do
 {
@@ -34,7 +34,7 @@ do
         Console.WriteLine("Nazwisko musi byc jednoczlonowe i zawierac wylacznie litery.");
         Console.WriteLine();
     }
-} while (name == null || !name.All(char.IsLetter));
+} while (surname == null || !surname.All(char.IsLetter));
 
 // Ekran he he "wyboru".
 Console.WriteLine();
@@ -51,9 +51,11 @@ do
     switch (choice)
     {
         case "1":
+            Console.WriteLine("Wybrales 1 - z zapisem do pliku");
             AddGradesToFile();
             break;
         case "2":
+            Console.WriteLine("Wybrales 2 - bez zapisu do pliku");
             AddGradesToMemory();
             break;
         default:
@@ -62,33 +64,31 @@ do
     }
 } while (choice != "1" && choice != "2");
 
-
+// Wybor 1 - zapis do pliku.
 void AddGradesToFile()
 {
     var student = new StudentInFile(name, surname);
     EnterGrade(student);
 }
 
+// Wybor 2 - tylko w pamieci.
 void AddGradesToMemory()
 {
     var student = new StudentInMemory(name, surname);
     EnterGrade(student);
 }
 
-// Wprowadzanie ocen studenta.
-// (wspolne dla obu wyborow, roznica tylko w zapisie: do pliku lub do pamieci)
+// Wprowadzanie ocen studenta (wspolne dla obu wyborow).
 void EnterGrade(IStudent student)
 {
     Console.Clear();
     Console.WriteLine("===================================================================");
-    Console.WriteLine(" Witamy w programie wyliczajacym ocene studenta na koniec semestru");
+    Console.WriteLine($"     Wprowadzasz oceny studenta {name} {surname}");
     Console.WriteLine("===================================================================");
     Console.WriteLine();
-    Console.WriteLine("Wprowadzanie ocen studenta");
-    Console.WriteLine();
     Console.WriteLine("Program akceptuje oceny numeryczne od 1 do 6 z czesciami ulamkowymi np. 3.35");
-    Console.WriteLine("lub z plusami i minusami, np. 3+, +3, -3, lub po amerykansku, litery od A do F.");
-    Console.WriteLine("Wybierajac litere 'Q' konczysz wprowadzanie ocen i wyswietlasz ocene koncowa.");
+    Console.WriteLine("lub z plusami i minusami, np. 3+, 3-, -3, lub po amerykansku, litery od A do F.");
+    Console.WriteLine("Naciskajac 'Q' konczysz wprowadzanie ocen i wyswietlasz ocene semestralna studenta.");
     Console.WriteLine();
     Console.WriteLine("Wprowadz pierwsza ocene studenta:");
 
@@ -118,7 +118,7 @@ void EnterGrade(IStudent student)
         }
         finally
         {
-            //tutaj jeszcze nie wiem, co bedzie...
+            //A tutaj jeszcze nie mam pomyslu, co dac...
         }
     }
 

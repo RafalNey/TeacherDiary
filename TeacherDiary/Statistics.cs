@@ -64,7 +64,7 @@ namespace TeacherDiary
                     case var average when average >= 2.25:
                         return "No ledwo, ledwo, ale niech ma juz to zaliczenie. Nie chesz sie z Nim dalej meczyc...";
                     case var average when average >= 2.00:
-                        return "Lipa, panie totalna lipa. Przepuszczamy na warunku";
+                        return "Lipa, panie totalna lipa. Przepuszczamy na warunku.";
                     case var average when average >= 1.00:
                         return "Semestr nie zaliczony! Do poprawki.";
                     default:
