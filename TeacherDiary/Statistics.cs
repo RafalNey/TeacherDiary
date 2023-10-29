@@ -1,21 +1,29 @@
 namespace TeacherDiary
 {
+    // Obliczanie statystyk studenta (sredniej z jego ocen).
     public class Statistics
     {
-        public float Sum { get; set; }
+        // Ilosc ocen.
         public int Count { get; set; }
 
-        // wartosci inicjalne
+        // Suma ocen.
+        public float Sum { get; set; }
+
+        // Wartosci inicjalne (same zera).
         public Statistics()
         {
             this.Count = 0;
             this.Sum = 0;
         }
+
+        // Dodawanie kolejnej oceny.
         public void AddGrade(float grade)
         {
             this.Count++;
             this.Sum += grade;
         }
+
+        // Obliczanie sredniej liczbowej.
         public float Average
         {
             get
@@ -24,49 +32,52 @@ namespace TeacherDiary
             }
         }
 
-        // Zamiana sredniej na ocene
+        // Zamiana sredniej liczbowej na opisowa ocene koncowa studenta.
         public string AverageGrade
         {
             get
             {
                 switch (this.Average)
                 {
-                    case var average when average == 6:
-                        return "Brawo! To najlepszy student. Ocena celujaca";
+                    case var average when average == 6.00:
+                        return "Brawo! Brawo! Brawissimo! To najlepszy student jakiego mamy. Ocena celujaca.";
                     case var average when average >= 5.75:
-                        return "Jeszcze o nim uslyszymy! Ocena: -6";
+                        return "Jeszcze o nim uslyszymy! Ocena celujaca z minusem.";
                     case var average when average >= 5.25:
-                        return "Wybitny student. Ocena: 5+";
-                    case var average when average >= 5:
-                        return "Bardzo dobry student. Ocena: 5";
+                        return "Student wybitny. Piatka z duzym plusem.";
+                    case var average when average >= 5.00:
+                        return "Bardzo dobry student. Piatka.";
                     case var average when average >= 4.75:
-                        return "Brawo! Piatka z malym minusem";
+                        return "Brawo! Piatka z malym minusem.";
                     case var average when average >= 4.25:
-                        return "Calkiem przyzwoicie. Ocena koncowa: 4+";
-                    case var average when average >= 4:
-                        return "Jest w porzo. Solidna czworka";
+                        return "Calkiem przyzwoicie. Zasluzona czworka z plusem.";
+                    case var average when average >= 4.00:
+                        return "Gosc jest w porzo. Solidna czworka.";
                     case var average when average >= 3.75:
-                        return "Moze byc. Ocena koncowa: -4";
+                        return "Moze byc. Ocena koncowa: cztery minus.";
                     case var average when average >= 3.25:
-                        return "Przecietniak. Ocena koncowa: 3+";
-                    case var average when average >= 3:
-                        return "Student trojkowy";
+                        return "Przecietniak, ale przynajmniej sie stara. Zasluguje na 3+";
+                    case var average when average >= 3.00:
+                        return "Student trojkowy. Przepuszczamy.";
                     case var average when average >= 2.75:
                         return "Gamon zupelny. Trzy na szynach :-(";
                     case var average when average >= 2.25:
-                        return "No ledwo, ledwo, ale niech ma to zaliczenie.";
-                    case var average when average >= 2:
-                        return "Kapa :-( ale warunkowo przepuszczamy, zeby sie z nim juz dluzej nie meczyc...";
+                        return "No ledwo, ledwo, ale niech ma juz to zaliczenie i spada.";
+                    case var average when average >= 2.00:
+                        return "Lipa, panie totalna lipa. Ale zaliczamy, zeby sie z nim juz  dluzej nie meczyc...";
                     case var average when average >= 1.75:
                         return "Semestr nie zaliczony! Do poprawki.";
                     case var average when average >= 1.25:
                         return "Semestr nie zaliczony! Do poprawki.";
-                    case var average when average == 1:
+                    case var average when average == 1.00:
                         return "Semestr nie zaliczony! Do poprawki.";
                     default:
-                        return "Brak ocen. To jakis kompletny obibok! Wywalic na zbity ryj!";
+                        return "Brak ocen. To jakis obibok! Nie patyczkowac sie! Wywalic na zbity pysk!";
                 }
             }
         }
     }
 }
+//  Kursant pisze na discordzie do mentora damianololo:
+// "Sluchaj gosciu, jestes jakis chamski dzisiaj"
+//  Padlem :-)
