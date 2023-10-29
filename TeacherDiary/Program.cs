@@ -20,7 +20,7 @@ do
         Console.WriteLine("Imie musi byc jednoczlonowe i zawierac wylacznie litery.");
         Console.WriteLine();
     }
-} while (name != null && name.All(char.IsLetter));
+} while (name == null || !name.All(char.IsLetter));
 
 Console.WriteLine();
 
@@ -34,14 +34,14 @@ do
         Console.WriteLine("Nazwisko musi byc jednoczlonowe i zawierac wylacznie litery.");
         Console.WriteLine();
     }
-} while (surname != null && surname.All(char.IsLetter));
+} while (name == null || !name.All(char.IsLetter));
 
 // Ekran he he "wyboru".
 Console.WriteLine();
 Console.WriteLine("Chcesz zapisac oceny studenta do pliku, czy tylko obliczyc jego ocene koncowa?");
 Console.WriteLine("Nacisnij:");
 Console.WriteLine("'1' aby dopisac oceny studenta do pliku *.txt i wyliczyc jego ocena koncowa.");
-Console.WriteLine("'2' by nie zapisujac ocen studenta, tylko wyliczyc jego ocene koncowa.");
+Console.WriteLine("'2' Nie zapisujac ocen studenta, jedynie wyliczyc jego ocene koncowa.");
 Console.WriteLine();
 
 string choice;
@@ -120,10 +120,10 @@ void EnterGrade(IStudent student)
         {
             //tutaj jeszcze nie wiem, co bedzie...
         }
-
-        // Wyswietlenie oceny koncowej studenta.
-        var statistics = student.GetStatistics();
-        Console.WriteLine($"Student {student.Name} {student.Surname}: {statistics.AverageGrade}");
-        Console.WriteLine();
     }
+
+    // Wyswietlenie oceny koncowej studenta.
+    var statistics = student.GetStatistics();
+    Console.WriteLine($"Student {student.Name} {student.Surname}: {statistics.AverageGrade}");
+    Console.WriteLine();
 }

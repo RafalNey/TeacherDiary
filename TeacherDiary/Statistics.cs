@@ -58,18 +58,14 @@ namespace TeacherDiary
                     case var average when average >= 3.25:
                         return "Przecietniak, ale przynajmniej sie stara. Zasluguje na 3+";
                     case var average when average >= 3.00:
-                        return "Student trojkowy. Przepuszczamy.";
+                        return "Uczen trojkowy. Przepuszczamy.";
                     case var average when average >= 2.75:
                         return "Gamon zupelny. Trzy na szynach :-(";
                     case var average when average >= 2.25:
-                        return "No ledwo, ledwo, ale niech ma juz to zaliczenie i spada.";
+                        return "No ledwo, ledwo, ale niech ma juz to zaliczenie. Nie chesz sie z Nim dalej meczyc...";
                     case var average when average >= 2.00:
-                        return "Lipa, panie totalna lipa. Ale zaliczamy, zeby sie z nim juz  dluzej nie meczyc...";
-                    case var average when average >= 1.75:
-                        return "Semestr nie zaliczony! Do poprawki.";
-                    case var average when average >= 1.25:
-                        return "Semestr nie zaliczony! Do poprawki.";
-                    case var average when average == 1.00:
+                        return "Lipa, panie totalna lipa. Przepuszczamy na warunku";
+                    case var average when average >= 1.00:
                         return "Semestr nie zaliczony! Do poprawki.";
                     default:
                         return "Brak ocen. To jakis obibok! Nie patyczkowac sie! Wywalic na zbity pysk!";

@@ -11,7 +11,7 @@ namespace TeacherDiary
         }
 
         // Lista ocen studenta
-        //        private List<float> grades = new List<float>();
+        private List<float> grades = new List<float>();
 
         // Lista dozwolonych liter jako oceny.
         public char[] specialLetters = { 'A', 'a', 'B', 'b', 'C', 'c', 'D', 'd', 'E', 'e', 'F', 'f' };
@@ -144,15 +144,16 @@ namespace TeacherDiary
             if (File.Exists(fileName))
             {
                 // Otwarcie pliku i na koniec zamkniecie go.
-                using (var reader = File.OpenText(fileName))
+                using (var reader = File.OpenText($"{fileName}"))
                 {
                     // Odczytanie danych z pliku, linijka po linijce.
                     var line = reader.ReadLine();
                     while (line != null)
                     {
                         // Wprowadzenie tych danych do wyliczenia oceny koncowej.
-                        var number = float.Parse(line);
-                        statistics.AddGrade(number);
+                        var grade = float.Parse(line);
+                        statistics.AddGrade(grade);
+                        line = reader.ReadLine();
                     }
                 }
             }
