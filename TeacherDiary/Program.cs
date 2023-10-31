@@ -1,6 +1,5 @@
 ﻿using TeacherDiary;
 
-// Ekran poczatkowy.
 Console.Clear();
 Console.WriteLine("===================================================================");
 Console.WriteLine(" Witamy w programie wyliczajacym ocene studenta na koniec semestru");
@@ -9,7 +8,6 @@ Console.WriteLine();
 Console.WriteLine("Wprowadz dane studenta:");
 Console.WriteLine();
 
-// Wprowadzanie danych studenta (imie i nazwisko).
 string name;
 do
 {
@@ -36,7 +34,6 @@ do
     }
 } while (surname == null || !surname.All(char.IsLetter));
 
-// Ekran he he "wyboru".
 Console.WriteLine();
 Console.WriteLine("Chcesz zapisac oceny studenta do pliku, czy tylko obliczyc jego ocene koncowa?");
 Console.WriteLine("Nacisnij:");
@@ -64,21 +61,18 @@ do
     }
 } while (choice != "1" && choice != "2");
 
-// Wybor 1 - zapis do pliku.
 void AddGradesToFile()
 {
     var student = new StudentInFile(name, surname);
     EnterGrade(student);
 }
 
-// Wybor 2 - tylko w pamieci.
 void AddGradesToMemory()
 {
     var student = new StudentInMemory(name, surname);
     EnterGrade(student);
 }
 
-// Wprowadzanie ocen studenta (wspolne dla obu wyborow).
 void EnterGrade(IStudent student)
 {
     Console.Clear();
@@ -98,7 +92,6 @@ void EnterGrade(IStudent student)
 
         if (input == "q" || input == "Q")
         {
-            // Ekran koncowy
             Console.Clear();
             Console.WriteLine("=================================================================");
             Console.WriteLine("      Komputer ostro mysli. Prosimy nie przeszkadzac...");
@@ -116,13 +109,8 @@ void EnterGrade(IStudent student)
         {
             Console.WriteLine($"Exception catched: {e.Message}");
         }
-        finally
-        {
-            //A tutaj jeszcze nie mam pomyslu, co dac...
-        }
     }
 
-    // Wyswietlenie oceny koncowej studenta.
     var statistics = student.GetStatistics();
     Console.WriteLine($"Student {student.Name} {student.Surname}: {statistics.AverageGrade}");
     Console.WriteLine();

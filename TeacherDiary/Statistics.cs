@@ -1,29 +1,19 @@
 namespace TeacherDiary
 {
-    // Obliczanie statystyk studenta (sredniej z jego ocen).
     public class Statistics
     {
-        // Ilosc ocen.
         public int Count { get; set; }
-
-        // Suma ocen.
         public float Sum { get; set; }
-
-        // Wartosci inicjalne (same zera).
         public Statistics()
         {
             this.Count = 0;
             this.Sum = 0;
         }
-
-        // Dodawanie kolejnej oceny.
         public void AddGrade(float grade)
         {
             this.Count++;
             this.Sum += grade;
         }
-
-        // Obliczanie sredniej liczbowej.
         public float Average
         {
             get
@@ -31,8 +21,6 @@ namespace TeacherDiary
                 return this.Sum / this.Count;
             }
         }
-
-        // Zamiana sredniej liczbowej na opisowa ocene koncowa studenta.
         public string AverageGrade
         {
             get
@@ -74,6 +62,3 @@ namespace TeacherDiary
         }
     }
 }
-//  Kursant pisze na discordzie do mentora damianololo:
-// "Sluchaj gosciu, jestes jakis chamski dzisiaj"
-//  Padlem :-)
